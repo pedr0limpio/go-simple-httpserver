@@ -17,6 +17,7 @@ func ServeHTTPS() {
 
 	tlsConfig := &tls.Config{}
 	tlsConfig.NextProtos = []string{"h2"}
+	tlsConfig.MinVersion = tls.VersionTLS12
 
 	fmt.Print("HTTPS: Servindo HTTP/2...")
 
