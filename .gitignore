@@ -17,3 +17,5 @@
 # Others
 *.vscode
 .DS_Store
+cmd/__debug_bin
+go.sum
