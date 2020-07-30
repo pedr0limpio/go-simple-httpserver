@@ -2,6 +2,7 @@ package httputils
 
 import (
 	"crypto/tls"
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -9,8 +10,18 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Serve inicializa o servidor
+func Serve() {
+	tls := flag.Bool("tls", false, "use for secure server")
+	flag.Parse()
+	if *tls {
+		serveHTTPS()
+	}
+	serveHTTP()
+}
+
 // ServeHTTPS inicializa escuta e serve HTTP/2
-func ServeHTTPS() {
+func serveHTTPS() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", rootHTTPHandler)
@@ -34,7 +45,7 @@ func ServeHTTPS() {
 }
 
 // ServeHTTP inicializa escuta e serve HTTP/2
-func ServeHTTP() {
+func serveHTTP() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/", rootHTTPHandler)

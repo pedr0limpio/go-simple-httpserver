@@ -10,6 +10,5 @@ func TestePrint() string {
 }
 
 func main() {
-	httputils.ServeHTTPS()
-	httputils.ServeHTTP()
+	httputils.Serve()
 }
